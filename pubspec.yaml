@@ -30,13 +30,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  wajiha_game_core:
-    path: packages/wajiha_game_core
-  shared_preferences: ^2.3.2
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  audioplayers: ^6.8.1
+  shared_preferences: ^2.5.6
+  in_app_purchase: ^3.2.0
+  share_plus: ^13.3.1
+  in_app_review: ^2.0.12
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +70,10 @@ flutter:
 
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/to/asset-from-package
+
+  assets:
+    - assets/idle_logo.png
+    - assets/wajiha_logo.png
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
