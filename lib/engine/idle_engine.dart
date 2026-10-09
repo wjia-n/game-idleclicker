@@ -298,13 +298,14 @@ class IdleEngine extends ChangeNotifier {
     if (_tick == null || !_tick!.isActive) {
       _tick = Timer.periodic(const Duration(milliseconds: 200), _onTick);
       _lastTickWall = now;
-    } else if (phase == EnginePhase.running &&
-        _lastTickWall != null &&
-        now.difference(_lastTickWall).inSeconds > 2) {
-      // Tick timer exists but went silent — re-arm it.
-      _tick!.cancel();
-      _tick = Timer.periodic(const Duration(milliseconds: 200), _onTick);
-      _lastTickWall = now;
+    } else if (phase == EnginePhase.running) {
+      final lastTickWall = _lastTickWall;
+      if (lastTickWall != null && now.difference(lastTickWall).inSeconds > 2) {
+        // Tick timer exists but went silent — re-arm it.
+        _tick!.cancel();
+        _tick = Timer.periodic(const Duration(milliseconds: 200), _onTick);
+        _lastTickWall = now;
+      }
     }
     if (phase == EnginePhase.prestiging &&
         (_prestigeTimer == null || !_prestigeTimer!.isActive)) {
