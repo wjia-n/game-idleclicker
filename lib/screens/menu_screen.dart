@@ -40,7 +40,6 @@ class _MenuScreenState extends State<MenuScreen> {
     super.initState();
     _store = StoreService();
     _store.init();
-    _store.proPurchased.addListener(_onPro);
     _store.lastThanks.addListener(_onThanks);
     _engine = IdleEngine();
     _engine.onMutated = () {
@@ -54,14 +53,7 @@ class _MenuScreenState extends State<MenuScreen> {
     _nameCtrl.text = widget.settings.playerName;
   }
 
-  void _onPro() {
-    if (_store.proPurchased.value && mounted) {
-      widget.settings.setPro(true);
-      _store.proPurchased.value = false;
-      setState(() {});
-    }
-  }
-
+  
   void _onThanks() {
     final msg = _store.lastThanks.value;
     if (msg == null || !mounted) return;
@@ -78,7 +70,6 @@ class _MenuScreenState extends State<MenuScreen> {
 
   @override
   void dispose() {
-    _store.proPurchased.removeListener(_onPro);
     _store.lastThanks.removeListener(_onThanks);
     _store.dispose();
     _engine.dispose();

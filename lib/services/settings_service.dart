@@ -113,7 +113,7 @@ class ClickerSettings extends ChangeNotifier {
   // -------------------------------------------------------------- appearance
   String themeId = 'woodshop';
   String tapStyleId = 'star';
-  bool isPro = false;
+  bool isPro = true; // everything unlocked — no Pro version
 
   /// Custom theme colors (ARGB ints). Defaults mirror Starlit Woodshop.
   Map<String, int> customColors = Map.of(_defaultCustomColors);
