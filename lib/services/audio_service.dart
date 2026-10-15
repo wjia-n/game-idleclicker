@@ -162,25 +162,6 @@ class ClickerAudio {
     return out;
   }
 
-  List<double> _musicBox(List<double> freqs, double noteSecs) {
-    // Music-box timbre: bright attack, long shimmer decay.
-    final out = <double>[];
-    for (final f in freqs) {
-      final n = (_rate * noteSecs).round();
-      final tone = List<double>.filled(n, 0);
-      for (int i = 0; i < n; i++) {
-        final t = i / _rate;
-        final env = exp(-t * 4.5) * (i / n / 0.005).clamp(0.0, 1.0);
-        tone[i] = env *
-            (sin(2 * pi * f * t) +
-                0.5 * sin(2 * pi * f * 2 * t) +
-                0.25 * sin(2 * pi * f * 4 * t));
-      }
-      out.addAll(tone);
-    }
-    return out;
-  }
-
   /// Soft synth pad from a chord (shared helper).
   List<double> _padChord(List<double> freqs, double secs) {
     final n = (_rate * secs).round();
