@@ -4,6 +4,7 @@ import '../services/audio_service.dart';
 import '../services/settings_service.dart';
 import '../theme/clicker_art.dart';
 import '../theme/clicker_themes.dart';
+import '../transfer/transfer_ui.dart';
 
 /// Settings: audio toggles + volume, profile rename, reset progress.
 /// All changes apply instantly and persist.
@@ -143,6 +144,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   const EdgeInsets.symmetric(horizontal: 22, vertical: 14),
               child: Column(
                 children: [
+              TransferSaveTile(gameSlug: 'idleclicker'),
                   ToyPanel(
                     theme: t,
                     child: Column(
